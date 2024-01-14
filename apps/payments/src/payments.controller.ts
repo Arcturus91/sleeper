@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UsePipes, ValidationPipe } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateChargeDTO } from '@app/common/dto/create-charge.dto';
@@ -8,8 +8,11 @@ export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
   @MessagePattern('create_charge')
+  @UsePipes(new ValidationPipe()) //validation pipe checks if data complies with DTO and returns an error if not.
   async createCharge(@Payload() data: CreateChargeDTO) {
-    this.paymentsService.createCharge(data);
+    //if i d only have the dto, remember thats only typing. If am not using pipes, i d pass properties as undefined and will not have control at runtime
+    //also, wrong data would reach my controller and service which can lead to unpredictable value
+    return this.paymentsService.createCharge(data);
   }
 }
 
