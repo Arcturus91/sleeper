@@ -11,6 +11,7 @@ async function bootstrap() {
     transport: Transport.RMQ,
     options: {
       urls: [configService.getOrThrow('RABBITMQ_URI')],
+      noAck: false,
       queue: 'payments',
     },
   });
@@ -21,3 +22,5 @@ async function bootstrap() {
   */
 }
 bootstrap();
+
+//the noAck = false means that rabbitmq will persist the message in the queue unless is acknoledged manually by the user
