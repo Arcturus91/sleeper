@@ -12,6 +12,10 @@ import { LoggerModule } from '@app/common';
       isGlobal: true,
       validationSchema: Joi.object({
         /*         PORT: Joi.number().required(), */
+        SMTP_USER: Joi.string().required(),
+        GOOGLE_OAUTH_CLIENT_ID: Joi.string().required(),
+        GOOGLE_OAUTH_CLIENT_SECRET: Joi.string().required(),
+        GOOGLE_OAUTH_REFRESH_TOKEN: Joi.string().required(),
       }),
     }),
   ],
@@ -19,3 +23,8 @@ import { LoggerModule } from '@app/common';
   providers: [NotificationsService],
 })
 export class NotificationsModule {}
+
+('SMTP_USER');
+('GOOGLE_OAUTH_CLIENT_ID');
+('GOOGLE_OAUTH_CLIENT_SECRET');
+('GOOGLE_OAUTH_REFRESH_TOKEN');

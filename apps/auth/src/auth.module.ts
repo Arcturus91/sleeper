@@ -23,6 +23,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         TCP_PORT: Joi.number().required(),
       }),
     }),
+    //JwtModule: A module for handling JSON Web Tokens (JWT) in Nest.js.
     JwtModule.registerAsync({
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),

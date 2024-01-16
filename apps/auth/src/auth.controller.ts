@@ -11,6 +11,8 @@ import { CurrentUser } from '@app/common';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  //for login we use localAuthGuard
+  /* The local strategy is commonly used for traditional username and password authentication. */
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(
@@ -21,6 +23,8 @@ export class AuthController {
     response.send(user);
   }
 
+  //for authenticate we use JwtAuthGuard
+  //The JWT strategy is used for stateless authentication using JSON Web Tokens.
   @UseGuards(JwtAuthGuard)
   @MessagePattern('authenticate')
   async authenticate(@Payload() data: any) {

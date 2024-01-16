@@ -31,7 +31,11 @@ export class PaymentsService {
       confirm: true,
       payment_method: 'pm_card_visa',
     });
-    this.notificationsService.emit('notify_email', { email });
+    const textSuccess = `Payment of $${amount} has been completed successfully`;
+    this.notificationsService.emit('notify_email', {
+      email,
+      text: textSuccess,
+    });
     return paymentIntent;
   }
 }
