@@ -4,7 +4,7 @@ steps:
     args: [
       'build',
       '-t',
-      'southamerica-west1-docker.pkg.dev/sleeper-411323/reservations/production'
+      'southamerica-west1-docker.pkg.dev/sleeper-411323/reservations/production',
       '-f',
       'apps/reservations/Dockerfile',
       '.'
@@ -22,7 +22,7 @@ steps:
     args: [
       'build',
       '-t',
-      'southamerica-west1-docker.pkg.dev/sleeper-411323/auth/production'
+      'southamerica-west1-docker.pkg.dev/sleeper-411323/auth/production',
       '-f',
       'apps/auth/Dockerfile',
       '.'
@@ -40,7 +40,7 @@ steps:
     args: [
       'build',
       '-t',
-      'southamerica-west1-docker.pkg.dev/sleeper-411323/payments/production'
+      'southamerica-west1-docker.pkg.dev/sleeper-411323/payments/production',
       '-f',
       'apps/payments/Dockerfile',
       '.'
@@ -58,7 +58,7 @@ steps:
     args: [
       'build',
       '-t',
-      'southamerica-west1-docker.pkg.dev/sleeper-411323/notifications/production'
+      'southamerica-west1-docker.pkg.dev/sleeper-411323/notifications/production',
       '-f',
       'apps/notifications/Dockerfile',
       '.'
