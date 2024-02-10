@@ -17,3 +17,23 @@ spec:
       containers:
       - image: southamerica-west1-docker.pkg.dev/sleeper-411323/notifications/production
         name: notifications
+        env:
+          - name: PORT
+            value: '3000'
+          - name: GOOGLE_OAUTH_CLIENT_ID
+            value: 47163833819-dp5rgh13o6vi6gfcvqcd0macvm0o6uaf.apps.googleusercontent.com
+          - name: GOOGLE_OAUTH_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: google
+                key: clientSecret
+          - name: GOOGLE_OAUTH_REFRESH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: google
+                key: refreshToken
+          - name: SMTP_USER
+            value: abarrantesvasquez@gmail.com
+        ports:
+          - containerPort: 3000
+
