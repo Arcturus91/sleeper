@@ -17,3 +17,10 @@ spec:
       containers:
       - image: southamerica-west1-docker.pkg.dev/sleeper-411323/auth/production
         name: auth
+        env: 
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: connectionString  
+

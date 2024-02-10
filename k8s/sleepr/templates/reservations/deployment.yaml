@@ -17,3 +17,9 @@ spec:
       containers:
       - image: southamerica-west1-docker.pkg.dev/sleeper-411323/reservations/production
         name: reservations
+        env: 
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongodb
+              key: connectionString  
