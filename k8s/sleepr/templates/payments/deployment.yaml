@@ -15,7 +15,7 @@ spec:
         app: payments
     spec:
       containers:
-      - image: southamerica-west1-docker.pkg.dev/sleeper-411323/payments/production
+      - image: 905418161107.dkr.ecr.sa-east-1.amazonaws.com/payments:latest
         name: payments
         env:
           - name: PORT
