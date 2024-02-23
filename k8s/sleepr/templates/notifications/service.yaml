@@ -7,8 +7,11 @@ metadata:
 spec:
   ports:
   - name: "tcp"
+  #this is the external port of the service.
+  #the request will be sent to this port
     port: 3000
     protocol: TCP
+    #the target port is the port of the pod to which this service is attached.
     targetPort: 3000
   selector:
     app: notifications

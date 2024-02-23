@@ -12,4 +12,5 @@ spec:
     targetPort: 3002
   selector:
     app: auth
+    #by default, cuando creamos un servicio, es clusterIP y es un internal service
   type: ClusterIP

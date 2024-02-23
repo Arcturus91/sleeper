@@ -12,4 +12,8 @@ spec:
     targetPort: 3004
   selector:
     app: reservations
+    #because reservations will be hit by http requests, we need it as a nodeport.
   type: NodePort
+  #si quisieras acceder directamnete al nodeport, debes agregarle una propiedad más: Nodeport:
+  #y elegir el port entre 30000 - 32767
+  #el acceso final será <ip address>:<Nodeport value>

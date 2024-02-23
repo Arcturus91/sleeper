@@ -11,6 +11,8 @@ services:
       - '3000:3000'
     volumes:
       - .:/usr/src/app
+      #kubernetes clust doesnt manage data pesistance.
+      #Thus volumes configuration is required.
   auth:
     build:
       context: .

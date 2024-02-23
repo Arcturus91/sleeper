@@ -1,20 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
+# we create deployments as a blueprint for pods.
+#it is for having a desired state for the pods which the control plane will constantly check and try to match.
+#pods are abstraction layers on top of containers.
+#deployments are an abstraction layer on top of pods.
+#api server is the only entry point to the cluster . we can enter with kubectl
 metadata:
+#identifier to the component = labels. all object kubernetes (like pods replicas) will share the label
   labels:
     app: notifications
   name: notifications
 spec:
   replicas: 1
   selector:
+  #this is in the spec of the deployment
+  #the matchlabel shall match with the labels of metadata. so it means that 
+  #all the pods that has the matchlabel notifications will match the deployment with label notifications.
     matchLabels:
       app: notifications
   template:
+  #template is the configuration for the pod.
+  #has its own metadata and spec section
+  #this configures the pod within a deployment
     metadata:
       labels:
         app: notifications
     spec:
       containers:
+      #here we define which image, which port
       - image: southamerica-west1-docker.pkg.dev/sleeper-411323/notifications/production
         name: notifications
         env:
@@ -36,4 +49,3 @@ spec:
             value: abarrantesvasquez@gmail.com
         ports:
           - containerPort: 3000
-

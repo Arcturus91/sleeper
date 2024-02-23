@@ -12,4 +12,6 @@ spec:
     targetPort: 3003
   selector:
     app: auth
+    #checa primero service-tcp. Como es internal service, se elige ClusterIp.
+    #pero si le ponemos NodePort, lo hacemos un external service.
   type: NodePort
