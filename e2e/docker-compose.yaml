@@ -26,9 +26,14 @@ services:
     image: southamerica-west1-docker.pkg.dev/sleeper-411323/payments/production
     env_file:
       - ../apps/payments/.env
+    ports:
+      - '3003:3003'
+
   notifications:
     image: southamerica-west1-docker.pkg.dev/sleeper-411323/notifications/production
     env_file:
       - ../apps/notifications/.env
+    ports:
+      - '3004:3004'
   mongo:
     image: mongo
