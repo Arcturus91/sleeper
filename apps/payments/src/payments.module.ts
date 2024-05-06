@@ -7,6 +7,7 @@ import { LoggerModule, NOTIFICATIONS_SERVICE } from '@app/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloFederationDriver } from '@nestjs/apollo';
+import { PaymentsResolver } from './payments.resolver';
 
 @Module({
   imports: [
@@ -52,7 +53,7 @@ import { ApolloDriverConfig, ApolloFederationDriver } from '@nestjs/apollo';
     ]),
   ],
   controllers: [PaymentsController],
-  providers: [PaymentsService],
+  providers: [PaymentsService, PaymentsResolver],
 })
 export class PaymentsModule {}
 

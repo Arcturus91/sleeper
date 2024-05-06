@@ -38,6 +38,11 @@ export class PaymentsService {
     });
     return paymentIntent;
   }
+
+  async getPayments() {
+    const allPayments = await this.stripe.paymentIntents.list();
+    return allPayments.data;
+  }
 }
 
 //nota como en el servicio que queremos emitir, registramos el cliente para indicar que ese es el que nos va a escuchar
