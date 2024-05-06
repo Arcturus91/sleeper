@@ -7,6 +7,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcryptjs';
 import { GetUserDto } from './dto/get-user.dto';
+import { UserDocument } from '@app/common';
 
 @Injectable()
 export class UsersService {
@@ -43,5 +44,9 @@ export class UsersService {
 
   async getUser(getUser: GetUserDto) {
     return this.usersRepository.findOne(getUser);
+  }
+
+  async findAll(): Promise<UserDocument[]> {
+    return await this.usersRepository.find({});
   }
 }

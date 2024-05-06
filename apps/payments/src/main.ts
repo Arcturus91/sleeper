@@ -11,7 +11,7 @@ async function bootstrap() {
     transport: Transport.TCP,
     options: {
       host: '0.0.0.0',
-      port: configService.get('PORT'),
+      port: configService.get('PORT_TCP'),
     },
   });
   app.useLogger(app.get(Logger));
@@ -19,5 +19,7 @@ async function bootstrap() {
   /*   await app.listen(configService.get('PORT')); 
   WE DONT need to listen http requests because Payments module will only have communication between services, not incoming http requests.
   */
+
+  await app.listen(configService.getOrThrow('PORT_HTTP'));
 }
 bootstrap();
