@@ -5,10 +5,10 @@
 // source: proto/payments.proto
 
 /* eslint-disable */
-import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
-import { Observable } from "rxjs";
+import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 
-export const protobufPackage = "payments";
+/* export const protobufPackage = "payments"; */
 
 export interface CreateChargeMessage {
   email: string;
@@ -27,7 +27,7 @@ export interface CreateChargeResponse {
   id: string;
 }
 
-export const PAYMENTS_PACKAGE_NAME = "payments";
+export const PAYMENTS_PACKAGE_NAME = 'payments';
 
 export interface PaymentsServiceClient {
   createCharge(request: CreateChargeMessage): Observable<CreateChargeResponse>;
@@ -36,22 +36,39 @@ export interface PaymentsServiceClient {
 export interface PaymentsServiceController {
   createCharge(
     request: CreateChargeMessage,
-  ): Promise<CreateChargeResponse> | Observable<CreateChargeResponse> | CreateChargeResponse;
+  ):
+    | Promise<CreateChargeResponse>
+    | Observable<CreateChargeResponse>
+    | CreateChargeResponse;
 }
 
 export function PaymentsServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["createCharge"];
+    const grpcMethods: string[] = ['createCharge'];
     for (const method of grpcMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcMethod("PaymentsService", method)(constructor.prototype[method], method, descriptor);
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(
+        constructor.prototype,
+        method,
+      );
+      GrpcMethod('PaymentsService', method)(
+        constructor.prototype[method],
+        method,
+        descriptor,
+      );
     }
     const grpcStreamMethods: string[] = [];
     for (const method of grpcStreamMethods) {
-      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
-      GrpcStreamMethod("PaymentsService", method)(constructor.prototype[method], method, descriptor);
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(
+        constructor.prototype,
+        method,
+      );
+      GrpcStreamMethod('PaymentsService', method)(
+        constructor.prototype[method],
+        method,
+        descriptor,
+      );
     }
   };
 }
 
-export const PAYMENTS_SERVICE_NAME = "PaymentsService";
+export const PAYMENTS_SERVICE_NAME = 'PaymentsService';

@@ -4,15 +4,16 @@ import {
   IsNumber,
   ValidateNested,
 } from 'class-validator';
-import { cardDto } from './card.dto';
+import { CardDto } from './card.dto';
 import { Type } from 'class-transformer';
+import { CreateChargeMessage } from '../types';
 
-export class CreateChargeDTO {
+export class CreateChargeDTO implements Omit<CreateChargeMessage, 'email'> {
   @IsDefined() // guarantees the card property is not undefined.
   @IsNotEmptyObject()
   @ValidateNested() //means it will check the properties inside.
-  @Type(() => cardDto)
-  card: cardDto;
+  @Type(() => CardDto)
+  card: CardDto;
 
   @IsNumber()
   amount: number;

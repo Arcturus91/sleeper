@@ -1,15 +1,16 @@
 import { IsCreditCard, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { CardMessage } from '../types';
 
-export class cardDto {
+export class CardDto implements CardMessage {
   @IsNotEmpty()
   @IsString()
   cvc: string;
 
   @IsNumber()
-  exp_month: number;
+  expMonth: number;
 
   @IsNumber()
-  exp_year: number;
+  expYear: number;
 
   @IsCreditCard()
   number: string;
