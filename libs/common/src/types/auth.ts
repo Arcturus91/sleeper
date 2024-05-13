@@ -20,7 +20,7 @@ export interface UserMessage {
   password: string;
 }
 
-/* export const AUTH_PACKAGE_NAME = "auth"; */
+export const AUTH_PACKAGE_NAME = 'auth';
 
 export interface AuthServiceClient {
   authenticate(request: Authentication): Observable<UserMessage>;
