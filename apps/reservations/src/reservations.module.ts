@@ -3,12 +3,12 @@ import { ReservationsService } from './reservations.service';
 import { ReservationsController } from './reservations.controller';
 import {
   AUTH_PACKAGE_NAME,
-  AUTH_SERVICE,
+  AUTH_SERVICE_NAME,
   DatabaseModule,
   HealthModule,
   LoggerModule,
   PAYMENTS_PACKAGE_NAME,
-  PAYMENTS_SERVICE,
+  PAYMENTS_SERVICE_NAME,
 } from '@app/common';
 import { ReservationRepository } from './reservations.repository';
 import {
@@ -31,17 +31,12 @@ import { join } from 'path';
       isGlobal: true,
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
-        PORT: Joi.number().required(),
-        AUTH_HOST: Joi.string().required(),
-        AUTH_PORT: Joi.number().required(),
-        PAYMENTS_HOST: Joi.string().required(),
-        PAYMENTS_PORT: Joi.number().required(),
       }),
     }),
 
     ClientsModule.registerAsync([
       {
-        name: AUTH_SERVICE,
+        name: AUTH_SERVICE_NAME,
         useFactory: (configService: ConfigService) => ({
           transport: Transport.GRPC,
           options: {
@@ -53,7 +48,7 @@ import { join } from 'path';
         inject: [ConfigService],
       },
       {
-        name: PAYMENTS_SERVICE,
+        name: PAYMENTS_SERVICE_NAME,
         useFactory: (configService: ConfigService) => ({
           transport: Transport.GRPC,
           options: {

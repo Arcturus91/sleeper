@@ -15,7 +15,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromExtractors([
         //request can be an rpc call or a express call. If rpc call, the auth token would be in the request object.
         (request: any) =>
-          request?.cookies?.Authentication || request?.Authentication,
+          request?.cookies?.Authentication ||
+          request?.Authentication ||
+          request?.headers?.Authentication,
       ]),
       secretOrKey: configService.get('JWT_SECRET'),
     });
