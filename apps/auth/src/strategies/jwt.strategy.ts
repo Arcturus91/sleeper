@@ -24,6 +24,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   /* assport automatically creates a user object, based on the 
   value we return from the validate() method, and assigns it to the Request object as req.user */
   async validate({ userId }: TokenPayload) {
-    return this.usersService.getUser({ _id: userId });
+    return this.usersService.getUser({ id: userId.toString() });
   }
 }
